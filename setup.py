@@ -7,7 +7,7 @@ long_description = (this_directory / "README.md").read_text(encoding="utf-8")
 setup(
     name='nlptoolkit_amr',
     version='1.0.0',
-    packages=['Corpus'],
+    packages=['Corpus', 'Construction'],
     url='https://github.com/StarlangSoftware/Amr-Py',
     license='',
     author='olcaytaner',
