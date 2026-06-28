@@ -56,7 +56,7 @@ class RuleBasedConstructionAlgorithm(AmrConstructionAlgorithm):
             if not self.__contains_arg0(word.getSemantic()):
                 if not (word.getParse().getPos() == "NOUN" and (word.getParse().containsTag(MorphologicalTag.P1SG) or word.getParse().containsTag(MorphologicalTag.P1PL) or word.getParse().containsTag(MorphologicalTag.P2SG) or word.getParse().containsTag(MorphologicalTag.P2PL))):
                     output.append(self.__with_tabs(tabCount + 1, "o:ARG0"))
-        if word.getParse().getRootPos() == "VERB" and word.getParse().containsTag(MorphologicalTag.A3SG) and "onlar " not in self.__sentence.toStems():
+        if word.getParse().getRootPos() == "VERB" and word.getParse().containsTag(MorphologicalTag.A3PL) and "onlar " not in self.__sentence.toStems():
             if not self.__contains_arg0(word.getSemantic()):
                 if not (word.getParse().getPos() == "NOUN" and (word.getParse().containsTag(MorphologicalTag.P1SG) or word.getParse().containsTag(MorphologicalTag.P1PL) or word.getParse().containsTag(MorphologicalTag.P2SG) or word.getParse().containsTag(MorphologicalTag.P2PL))):
                     output.append(self.__with_tabs(tabCount + 1, "onlar:ARG0"))
@@ -327,7 +327,7 @@ class RuleBasedConstructionAlgorithm(AmrConstructionAlgorithm):
                     if connected_word.getUniversalDependency() is not None and connected_word.getUniversalDependency().to() == index + 1 and connected_word.getUniversalDependency().__str__() in ["PARATAXIS", "CONJ"]:
                         self.__print_amr_recursively(done, i, tabCount + 1, output, relation, semantic, wordNet, ":op" + str(count))
                         count = count + 1
-                self.__print_amr_recursively(done, index, tabCount + 1, output, relation, semantic, wordNet, ":op" + str(count))
+            self.__print_amr_recursively(done, index, tabCount + 1, output, relation, semantic, wordNet, ":op" + str(count))
         else:
             if word.getParse().containsTag(MorphologicalTag.NECESSITY):
                 output.append(self.__with_tabs(tabCount, "öner"))
